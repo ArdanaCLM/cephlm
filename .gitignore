@@ -1,0 +1,34 @@
+# pycharm project dir
+.idea/
+
+# pyc files
+*.pyc
+
+# egg-info files
+cephlm.egg-info/
+
+# virtualenv
+.venv/
+
+# coverage and nose tests
+.coverage
+.coveragerc
+.testrepository/
+.tox/
+cover/
+coverage.xml
+nosetests.xml
+covhtml/
+install_external_deps.log
+
+# doc
+doc/build
+
+# pep8 and pylint
+pep8.txt
+pylint.txt
+
+#eclipse specific
+.project
+.pydevproject
+.settings

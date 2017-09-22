@@ -1,0 +1,6 @@
+eventlet
+setuptools
+netifaces
+enum34
+python-keystoneclient
+pyyaml
