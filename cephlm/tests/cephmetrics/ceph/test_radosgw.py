@@ -107,7 +107,7 @@ class TestRadosgw(unittest.TestCase):
         mock_fetch.return_value = "standard-ceph-ccp-rgw-m1-mgmt:8079"
         with mock.patch('requests.get') as mocked:
             mocked.side_effect = requests.exceptions.ConnectionError(
-                                     "No response")
+                "No response")
             result = Radosgw.get_status(mock_fetch.return_value)
             self.assertFalse(result)
 

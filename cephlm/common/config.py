@@ -48,6 +48,7 @@ def set_default_values(cfg):
     # Maximum number of OSDs per journal disk
     cfg.set('osd', 'optimal_osd_per_journal', '4')
 
+
 cfg = ConfigParser.RawConfigParser()
 set_default_values(cfg)
 cfg.read(CEPHLM_CONF)

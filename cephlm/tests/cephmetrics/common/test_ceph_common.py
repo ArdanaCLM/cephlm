@@ -55,7 +55,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_status(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
         mock_cmd.return_value = json.dumps(ClusterStatusData.HEALTH_OK)
         result = Ceph.get_status()
         self.assertEqual(ClusterStatusData.HEALTH_OK, result)
@@ -63,7 +63,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_status_error(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
         regexp = "Failed to run command 'ceph -s'"
         mock_cmd.side_effect = ShellCommandException(regexp)
         self.assertRaisesRegexp(CephCommandException, regexp,
@@ -85,7 +85,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_osd_tree(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
         mock_cmd.return_value = json.dumps(OSDData.TEST_OSD_TREE)
         result = Ceph.get_osd_tree()
         self.assertEqual(OSDData.TEST_OSD_TREE, result)
@@ -93,7 +93,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_osd_tree_error(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph.conf'))
         regexp = "Failed to run command 'ceph osd tree'"
         mock_cmd.side_effect = ShellCommandException(regexp)
         self.assertRaisesRegexp(CephCommandException, regexp,
@@ -111,7 +111,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_ceph_df(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
         mock_cmd.return_value = json.dumps(PoolData.test_pool_df)
         result = Ceph.get_ceph_df()
         self.assertEqual(PoolData.test_pool_df, result)
@@ -119,7 +119,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_ceph_df_error(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
         regexp = "Failed to run command 'ceph df'"
         mock_cmd.side_effect = ShellCommandException(regexp)
         self.assertRaisesRegexp(CephCommandException, regexp,
@@ -128,7 +128,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_quorum_status(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
         mock_cmd.return_value = json.dumps(MonitorQuorumData.QUORUM_OK)
         result = Ceph.get_quorum_status()
         self.assertEqual(MonitorQuorumData.QUORUM_OK, result)
@@ -136,7 +136,7 @@ class TestCeph(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.common.ceph_common.run_cmd')
     def test_get_quorum_status_error(self, mock_cmd):
         Ceph._get_ceph_config = mock.Mock(
-                return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
+            return_value=('ceph1', dict(), '/etc/ceph/ceph1.conf'))
         regexp = "Failed to run command 'ceph quorum_status'"
         mock_cmd.side_effect = ShellCommandException(regexp)
         self.assertRaisesRegexp(CephCommandException, regexp,

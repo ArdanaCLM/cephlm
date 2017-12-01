@@ -88,7 +88,7 @@ class TestPerfScale(unittest.TestCase):
                 'Ceph.get_ceph_disk_list')
     def test_memory_unknown_error(self, mock_list, mock_mem, mock_disks):
         mock_disks.side_effect = ShellCommandException(
-                "Failed to run command 'fdisk -l'")
+            "Failed to run command 'fdisk -l'")
         mock_mem.return_value = HardwareData.MEMINFO_WARN
         mock_list.return_value = CephDisksData.DISK_LIST_OK
         result = PerfScale.check_osd_node_ram()

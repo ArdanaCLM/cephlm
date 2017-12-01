@@ -68,7 +68,7 @@ class PerfScale:
             return result
 
         total_osd_size, ram = PerfScale._process_osd_ram_data(
-                data_disks, disks_info, mem_info)
+            data_disks, disks_info, mem_info)
 
         if not data_disks:
             # Ideally this check will not be run on non OSD nodes, but in case
@@ -76,10 +76,10 @@ class PerfScale:
             return list()
 
         result = base_result.child(
-                msgkeys={'ram': '%s' % ram,
-                         'total_osd_size': '%s' % total_osd_size})
+            msgkeys={'ram': '%s' % ram,
+                     'total_osd_size': '%s' % total_osd_size})
         result.value = PerfScale._process_osd_ram_status(
-                total_osd_size, ram)
+            total_osd_size, ram)
         return result
 
     @staticmethod
@@ -96,9 +96,9 @@ class PerfScale:
 
         # Convert Bytes to TiB
         total_osd_size = \
-            round(float(total_osd_size)/(1024 * 1024 * 1024 * 1024), 1)
+            round(float(total_osd_size) / (1024 * 1024 * 1024 * 1024), 1)
         # Convert KiB to GiB
-        ram = round(float(mem_info['MemTotal']) / (1024*1024), 1)
+        ram = round(float(mem_info['MemTotal']) / (1024 * 1024), 1)
 
         return total_osd_size, ram
 
@@ -151,16 +151,16 @@ class PerfScale:
         private_ip = ceph_bindings.get('private_ip', None)
 
         nic_speeds = PerfScale._process_nic_speed(
-                public_ip, private_ip, nic_info)
+            public_ip, private_ip, nic_info)
 
         shared_external_net = PerfScale._has_shared_external_networks(
-                public_ip, private_ip, nic_info)
+            public_ip, private_ip, nic_info)
 
         metrics = list()
         for entry in ceph_bindings:
             ip = ceph_bindings[entry]
             severity, msg = PerfScale._format_nic_speed_status(
-                    ip, nic_speeds[ip], shared_external_net)
+                ip, nic_speeds[ip], shared_external_net)
             metric = base_result.child(msgkeys={'msg': msg})
             metric.name = 'cephlm.perfscale.nic_speed_%s' \
                           % entry.replace('_ip', '')

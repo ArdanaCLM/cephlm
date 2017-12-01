@@ -1231,44 +1231,39 @@ class MonitorQuorumData:
                                "name": "mcloud-ccp1-c1-m3-osd-client",
                                "addr": "192.168.12.5:6789/0"
                            }
-                           ]
-                           }
+                       ]
+                   }
                    }
     QUORUM_OK = {"election_epoch": 300,
                  "quorum": [
-                    0,
-                    1,
-                    2
-                  ],
+                     0,
+                     1,
+                     2
+                 ],
                  "quorum_names": [
-                    "mcloud-ccp1-c1-m1-osd-client",
-                    "mcloud-ccp1-c1-m2-osd-client",
-                    "mcloud-ccp1-c1-m3-osd-client"
-                  ],
+                     "mcloud-ccp1-c1-m1-osd-client",
+                     "mcloud-ccp1-c1-m2-osd-client",
+                     "mcloud-ccp1-c1-m3-osd-client"
+                 ],
                  "quorum_leader_name": "mcloud-ccp1-c1-m1-osd-client",
                  "monmap": {
-                    "epoch": 1,
-                    "fsid": "2645bbf6-16d0-4c42-8835-8ba9f5c95a1d",
-                    "modified": "2016-06-22 06:52:02.384290",
-                    "created": "2016-06-22 06:52:02.384290",
-                    "mons": [
-                      {
-                        "rank": 0,
-                        "name": "mcloud-ccp1-c1-m1-osd-client",
-                        "addr": "192.168.12.3:6789/0"
-                      },
-                      {
-                        "rank": 1,
-                        "name": "mcloud-ccp1-c1-m2-osd-client",
-                        "addr": "192.168.12.4:6789/0"
-                      },
-                      {
-                        "rank": 2,
-                        "name": "mcloud-ccp1-c1-m3-osd-client",
-                        "addr": "192.168.12.5:6789/0"
-                      }
-                    ]
-                  }
-                 }
+                     "epoch": 1,
+                     "fsid": "2645bbf6-16d0-4c42-8835-8ba9f5c95a1d",
+                     "modified": "2016-06-22 06:52:02.384290",
+                     "created": "2016-06-22 06:52:02.384290",
+                     "mons": [
+                         {
+                             "rank": 0,
+                             "name": "mcloud-ccp1-c1-m1-osd-client",
+                             "addr": "192.168.12.3:6789/0"},
+                         {
+                             "rank": 1,
+                             "name": "mcloud-ccp1-c1-m2-osd-client",
+                             "addr": "192.168.12.4:6789/0"},
+                         {
+                             "rank": 2,
+                             "name": "mcloud-ccp1-c1-m3-osd-client",
+                             "addr": "192.168.12.5:6789/0"}]
+                 }}
     Monitors = 'mcloud-ccp1-c1-m1-osd-client,mcloud-ccp1-c1-m2-osd-client,' \
                'mcloud-ccp1-c1-m3-osd-client'

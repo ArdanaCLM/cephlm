@@ -72,8 +72,8 @@ class OSD(Ceph):
         """
         Reports the count of osds that are up but out of the cluster
         """
-        osds_up_and_out = set(osd_dict['osds_up']).intersection(
-                                set(osd_dict['osds_out']))
+        osds_up_and_out = set(
+            osd_dict['osds_up']).intersection(set(osd_dict['osds_out']))
         return len(osds_up_and_out),\
             string_range(sorted(list(osds_up_and_out)))
 
@@ -90,8 +90,8 @@ class OSD(Ceph):
         """
         Reports the count of osds that are down and in the cluster
         """
-        osds_down_and_in = set(osd_dict['osds_down']).intersection(
-                               set(osd_dict['osds_in']))
+        osds_down_and_in = set(
+            osd_dict['osds_down']).intersection(set(osd_dict['osds_in']))
         return len(osds_down_and_in), string_range(sorted(osds_down_and_in))
 
     @staticmethod

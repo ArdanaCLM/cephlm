@@ -82,8 +82,7 @@ class PoolData:
                     "max_avail": 8997130402342,
                     "objects": 0
                 }
-            }
-        ]
+            }]
     }
     test_pool_values_error = [(-1, 'cephlm.pool.count',
                               "Probe error: Command 'ceph df' failed"),
