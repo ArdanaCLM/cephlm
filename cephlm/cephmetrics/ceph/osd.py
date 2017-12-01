@@ -19,7 +19,7 @@ from cephlm.common.config import cfg
 from cephlm.cephmetrics.common.ceph_common import Ceph
 from cephlm.utils.metricdata import MetricData
 from cephlm.utils.values import Severity
-from cephlm.common.exceptions import *    # noqa
+from cephlm.common import exceptions as exc
 from cephlm.utils.utility import string_range
 
 
@@ -45,7 +45,7 @@ class OSD(Ceph):
                     osds_up.append(obj['id'])
                 else:
                     osds_down.append(obj['id'])
-                if isinstance(obj['reweight'], unicode):
+                if isinstance(obj['reweight'], str):
                     obj['reweight'] = \
                         float(obj['reweight'].encode('ascii', 'ignore'))
                 if obj['reweight'] == 0:
@@ -115,8 +115,8 @@ class OSD(Ceph):
         probe_failed = False
         try:
             osd_stats = OSD._stats()
-        except (CephLMException, CephCommandException,
-                CephCommandTimeoutException) as e:
+        except (exc.CephLMException, exc.CephCommandException,
+                exc.CephCommandTimeoutException) as e:
             probe_failed = True
 
         for metric_state, func in metric_dict.iteritems():
@@ -149,7 +149,7 @@ class OSD(Ceph):
         )
         try:
             journal_disks, data_disks = OSD.get_ceph_disk_list()
-        except (CephLMException, CephCommandException) as e:
+        except (exc.CephLMException, exc.CephCommandException) as e:
             result = base_result.child(msgkeys={'msg': str(e)})
             result.value = Severity.unknown
             return result

@@ -17,7 +17,7 @@
 
 from cephlm.cephmetrics.common.ceph_common import Ceph
 from cephlm.utils.metricdata import MetricData
-from cephlm.common.exceptions import *    # noqa
+from cephlm.common import exceptions as exc
 
 
 class Capacity(Ceph):
@@ -53,8 +53,8 @@ class Capacity(Ceph):
         probe_failed = False
         try:
             capacity_dict = Capacity._stats()
-        except (CephLMException, CephCommandException,
-                CephCommandTimeoutException) as e:
+        except (exc.CephLMException, exc.CephCommandException,
+                exc.CephCommandTimeoutException) as e:
             probe_failed = True
             msg = str(e)
         for metric_name in metric_list:

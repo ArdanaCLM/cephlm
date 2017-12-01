@@ -14,7 +14,6 @@
 # under the License.
 #
 
-import os
 import mock
 import requests
 import unittest

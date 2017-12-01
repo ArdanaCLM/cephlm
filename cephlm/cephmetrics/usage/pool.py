@@ -18,7 +18,7 @@
 from cephlm.common.config import cfg
 from cephlm.cephmetrics.common.ceph_common import Ceph
 from cephlm.utils.metricdata import MetricData
-from cephlm.common.exceptions import *    # noqa
+from cephlm.common import exceptions as exc
 
 
 class Pool(Ceph):
@@ -31,7 +31,7 @@ class Pool(Ceph):
     def _fetch_top_pools(pools, key, n):
         pools.sort(key=lambda e: e['stats'][key], reverse=True)
         top_pools = list()
-        for i in xrange(n):
+        for i in range(n):
             top_pools.append((pools[i]['name'], pools[i]['stats'][key]))
         return top_pools
 
@@ -168,8 +168,8 @@ class Pool(Ceph):
                        }
         try:
             pool_dict = Pool._stats()
-        except (CephLMException, CephCommandException,
-                CephCommandTimeoutException) as e:
+        except (exc.CephLMException, exc.CephCommandException,
+                exc.CephCommandTimeoutException) as e:
             probe_failed = True
             msg = str(e)
         for metric_name, state in metric_dict.iteritems():

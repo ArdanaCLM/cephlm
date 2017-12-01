@@ -17,10 +17,9 @@
 
 import mock
 import unittest
-from cephlm.cephmetrics.ceph.cluster import Cluster
 from cephlm.tests.cephmetrics.usage.test_data import PoolData
 from cephlm.cephmetrics.usage.pool import Pool
-from cephlm.common.exceptions import CephCommandException, CephLMException
+from cephlm.common import exceptions as exc
 
 
 class TestCluster(unittest.TestCase):
@@ -43,7 +42,7 @@ class TestCluster(unittest.TestCase):
     @mock.patch('cephlm.cephmetrics.usage.pool.Pool.get_ceph_df')
     def test_status_error(self, mock_ceph_df):
         mock_ceph_df.side_effect = \
-            CephCommandException("Probe error: Command 'ceph df' failed")
+            exc.CephCommandException("Probe error: Command 'ceph df' failed")
         result = Pool.pool_stats()
         values = [(item.value, item.name, str(item)) for item in result]
         self.assertEqual(sorted(values),

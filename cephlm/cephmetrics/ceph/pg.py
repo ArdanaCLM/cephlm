@@ -17,7 +17,7 @@
 
 from cephlm.cephmetrics.common.ceph_common import Ceph
 from cephlm.utils.metricdata import MetricData
-from cephlm.common.exceptions import *    # noqa
+from cephlm.common import exceptions as exc
 
 
 class PG(Ceph):
@@ -51,14 +51,13 @@ class PG(Ceph):
         """
         Function to aggregate all metrics
         """
-        result = list()
         msg = ''
         INVALID_VALUE = -1
         probe_failed = False
         try:
             pg_stats = PG._stats()
-        except (CephLMException, CephCommandException,
-                CephCommandTimeoutException) as e:
+        except (exc.CephLMException, exc.CephCommandException,
+                exc.CephCommandTimeoutException) as e:
             probe_failed = True
             msg = 'Probe error: ' + str(e)
         if probe_failed:

@@ -51,7 +51,7 @@ class CephlmSysLogHandler(logging.Handler):
                 try:
                     syslog.openlog('cephlm', syslog.LOG_PID,
                                    log_facility)
-                except:
+                except Exception:
                     raise
         syslog.setlogmask(syslog.LOG_UPTO(SYSLOG_LEVEL_MAP[log_level_str]))
         logging.Handler.__init__(self)

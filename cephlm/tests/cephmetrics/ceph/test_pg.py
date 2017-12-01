@@ -18,7 +18,6 @@ import mock
 import unittest
 
 from cephlm.common.exceptions import CephCommandException
-from cephlm.tests.cephmetrics.ceph.test_data import ClusterStatusData
 from cephlm.tests.cephmetrics.ceph.test_data import ExtendedPGData
 from cephlm.cephmetrics.ceph.pg import PG
 

@@ -21,7 +21,7 @@ import json
 import ConfigParser
 
 from cephlm.common.config import cfg
-from cephlm.common.exceptions import *    # noqa
+from cephlm.common import exceptions as exc
 from cephlm.utils.system import run_cmd
 
 
@@ -45,7 +45,7 @@ class Ceph:
             return cluster_name, config, config_file
         else:
             msg = "Could not find ceph configuration directory /etc/ceph"
-            raise CephLMException(msg)
+            raise exc.CephLMException(msg)
 
     @staticmethod
     def get_status():
@@ -55,10 +55,10 @@ class Ceph:
                              '--cluster %s' % (Ceph.COMMAND_TIMEOUT_SECS,
                                                cluster_name))
             return json.loads(output)
-        except (ShellCommandException, ValueError) as e:
-            raise CephCommandException(str(e))
-        except ShellCommandTimeoutException as e:
-            raise CephCommandTimeoutException(str(e))
+        except (exc.ShellCommandException, ValueError) as e:
+            raise exc.CephCommandException(str(e))
+        except exc.ShellCommandTimeoutException as e:
+            raise exc.CephCommandTimeoutException(str(e))
 
     @staticmethod
     def get_osd_tree():
@@ -68,18 +68,18 @@ class Ceph:
                              '--cluster %s' % (Ceph.COMMAND_TIMEOUT_SECS,
                                                cluster_name))
             return json.loads(output)
-        except (ShellCommandException, ValueError) as e:
-            raise CephCommandException(str(e))
-        except ShellCommandTimeoutException as e:
-            raise CephCommandTimeoutException(str(e))
+        except (exc.ShellCommandException, ValueError) as e:
+            raise exc.CephCommandException(str(e))
+        except exc.ShellCommandTimeoutException as e:
+            raise exc.CephCommandTimeoutException(str(e))
 
     @staticmethod
     def get_ceph_disk_list():
         try:
             output = run_cmd('ceph-disk list')
             return Ceph._process_ceph_disk_list(output)
-        except (ShellCommandException, ValueError) as e:
-            raise CephCommandException(str(e))
+        except (exc.ShellCommandException, ValueError) as e:
+            raise exc.CephCommandException(str(e))
 
     @staticmethod
     def _process_ceph_disk_list(raw_output):
@@ -115,10 +115,10 @@ class Ceph:
                              '--cluster %s' % (Ceph.COMMAND_TIMEOUT_SECS,
                                                cluster_name))
             return json.loads(output)
-        except (ShellCommandException, ValueError) as e:
-            raise CephCommandException(str(e))
-        except ShellCommandTimeoutException as e:
-            raise CephCommandTimeoutException(str(e))
+        except (exc.ShellCommandException, ValueError) as e:
+            raise exc.CephCommandException(str(e))
+        except exc.ShellCommandTimeoutException as e:
+            raise exc.CephCommandTimeoutException(str(e))
 
     @staticmethod
     def get_quorum_status():
@@ -128,7 +128,7 @@ class Ceph:
                              '--cluster %s' % (Ceph.COMMAND_TIMEOUT_SECS,
                                                cluster_name))
             return json.loads(output)
-        except (ShellCommandException, ValueError) as e:
-            raise CephCommandException(str(e))
-        except ShellCommandTimeoutException as e:
-            raise CephCommandTimeoutException(str(e))
+        except (exc.ShellCommandException, ValueError) as e:
+            raise exc.CephCommandException(str(e))
+        except exc.ShellCommandTimeoutException as e:
+            raise exc.CephCommandTimeoutException(str(e))

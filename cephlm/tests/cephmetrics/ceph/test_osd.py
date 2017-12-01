@@ -14,7 +14,6 @@
 # under the License.
 #
 
-import re
 import mock
 import unittest
 

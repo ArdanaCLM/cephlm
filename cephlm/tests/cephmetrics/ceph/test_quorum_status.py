@@ -16,7 +16,6 @@
 
 import mock
 import unittest
-import ConfigParser
 
 from cephlm.common.exceptions import *   # noqa
 from cephlm.tests.cephmetrics.ceph.test_data import *   # noqa

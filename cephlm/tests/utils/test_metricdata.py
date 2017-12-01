@@ -18,7 +18,6 @@
 
 
 import unittest
-import mock
 
 from cephlm.utils.metricdata import MetricData
 from cephlm.utils.values import Severity

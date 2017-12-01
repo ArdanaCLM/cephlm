@@ -17,6 +17,7 @@
 #
 
 import mock
+import subprocess
 import unittest
 
 from cephlm.tests.utils.test_data import *   # noqa

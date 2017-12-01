@@ -18,7 +18,7 @@ import mock
 import unittest
 
 from cephlm.tests.cephmetrics.usage.test_data import PoolData, CapacityData
-from cephlm.common.exceptions import CephCommandException, CephLMException
+from cephlm.common.exceptions import CephCommandException
 from cephlm.cephmetrics.usage.capacity import Capacity
 
 

@@ -19,7 +19,6 @@
 # to import any dependent modules.
 from collections import defaultdict
 import json
-import pkg_resources
 
 try:
     from monasca_agent.collector.checks import AgentCheck as AgentCheck

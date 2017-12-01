@@ -17,7 +17,6 @@
 
 import json
 import mock
-import subprocess
 import unittest
 
 import ConfigParser
